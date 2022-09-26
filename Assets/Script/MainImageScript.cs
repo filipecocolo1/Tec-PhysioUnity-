@@ -6,6 +6,7 @@ using UnityEngine;
 public class MainImageScript : MonoBehaviour
 {
     [SerializeField] private GameObject image_Down;
+    [SerializeField] private GameController gameController;   
 
     // Start is called before the first frame update
   
@@ -16,9 +17,10 @@ public class MainImageScript : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (image_Down.activeSelf)
+        if (image_Down.activeSelf && gameController.canOpen)
         {
          image_Down.SetActive(false);
+            gameController.imageOpened(this);
         }
     }
     private int _spritId;
@@ -36,6 +38,11 @@ public class MainImageScript : MonoBehaviour
 
 
     }
-    
+    public void Close()
+    {
+        image_Down.SetActive(true);//Esconde a Imagem
+
+
+    }
 
 }
