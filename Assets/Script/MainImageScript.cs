@@ -6,42 +6,31 @@ using UnityEngine;
 public class MainImageScript : MonoBehaviour
 {
     [SerializeField] private GameObject image_Down;
-    [SerializeField] private GameController gameController;   
-
-    // Start is called before the first frame update
-  
-    
-        
+    [SerializeField] private GameController gameController;
 
 
-
-    public void OnMouseDown()
+    public void OnMouseDown()//Metodo serve para clicar na imagem 
     {
         if (image_Down.activeSelf && gameController.canOpen)
         {
-         image_Down.SetActive(false);
+            image_Down.SetActive(false);
             gameController.imageOpened(this);
         }
     }
     private int _spritId;
-    
+
     public int spritId
     {
         get { return _spritId; }
-        
-       
     }
-    public void ChangeSprite(int id,Sprite Image)
+    public void ChangeSprite(int id, Sprite Image)
     {
         _spritId = id;
         GetComponent<SpriteRenderer>().sprite = Image;
-
-
     }
     public void Close()
     {
         image_Down.SetActive(true);//Esconde a Imagem
-
 
     }
 
